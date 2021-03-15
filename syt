@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# TODO figure out why i need to echo to get colors
+# TODO add some argument parser to specify number of results and search format
+# TODO add dmenu support
+# TODO add subscription support
+
+# RED="\033[1;31m"
+TITLE="\\\033[1\;31m"
+AUTHOR="\\\033[0\;33m"
+# NC="\\\033[0m"
+
+cache="/tmp/search-yt"
+
+curl -s "https://invidious.snopyta.org/api/v1/search?q=$1?type=video" |
+  grep -Po '"title":.*?[^\\]","authorId' |
+  echo "$(sed "6Q;s/\"title\":\"/${TITLE}/g;s/\",\"videoId\":\"/${AUTHOR}\n/g;\
+    s/\",\"/\ |\ /g;s/\":\"/\ -\ /g;s/\ |\ authorId//g")" |
+  awk 'NR % 2 {print} !(NR % 2) {print "["NR/2"]" " " $0}' |
+  tee /tmp/search-yt
