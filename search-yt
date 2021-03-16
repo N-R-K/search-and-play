@@ -7,12 +7,13 @@ YELLOW="\033[0;33m"
 CACHE="/tmp/search-yt"
 INSTANCE="https://invidious.snopyta.org/search?q="
 
+QUERY="$( echo $@ | sed 's| |+|g' )"
 
-curl -s "$INSTANCE$1" |
+curl -s "$INSTANCE$QUERY" |
   grep -o -e 'href\=\"/watch.**</a>' -e '.* views' \
     -e 'href\=\"/channel.**</a>' -e 'length.*</p' \
     -e '>Shared.*</div' |
-  head -n 15 |
+  head -n 25 |
   awk -F '[<>]' -v CACHE="${CACHE}" \
     ' ( NF > 1 ) { print $2 } /views/ {\
     gsub(/\s{2,}/,""); print "[" ++count "]" "-> " $0 } /watch/ {\
