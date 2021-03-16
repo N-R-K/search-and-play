@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NC="\033[0m"
+# NC="\033[0m"
 RED="\033[1;31m"
 YELLOW="\033[0;33m"
 
@@ -9,6 +9,7 @@ INSTANCE="https://invidious.snopyta.org/search?q="
 
 QUERY="$( echo $@ | sed 's| |+|g' )"
 TYPE="+content_type:video"
+NUMBER_OF_RESULTS="16"
 
 curl -s "$INSTANCE$QUERY$TYPE" |
   awk -F '[<>]' \
@@ -27,4 +28,5 @@ curl -s "$INSTANCE$QUERY$TYPE" |
           print YELLOW AUTHOR \
             " | " LENGTH \
             " | " $0 \
-            " | " AGE } '
+            " | " AGE } ' |
+  head -n "$NUMBER_OF_RESULTS"
