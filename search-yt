@@ -12,9 +12,9 @@ QUERY="$( echo $@ | sed 's| |+|g' )"
 # TODO fix the cache dir
 curl -s "$INSTANCE$QUERY" |
   awk -F '[<>]' \
-    -v quote="'" -v dquote=\" \
+    -v QUOTE="'" -v DQUOTE=\" \
       '/href="\/watch.*<\/a>/ {
-          gsub(/&#39;/,quote); gsub(/&quot;/,dquote);
+          gsub(/&#39;/,QUOTE); gsub(/&quot;/,DQUOTE);
           print $5; print $4 > "/tmp/lmao"
       } /views$/ {
           gsub(/\s{2,}/,"");
