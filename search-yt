@@ -10,14 +10,14 @@ INSTANCE="https://invidious.snopyta.org/search?q="
 QUERY="$( echo $@ | sed 's| |+|g' )"
 TYPE="+content_type:video"
 
-# TODO fix the cache dir
 curl -s "$INSTANCE$QUERY$TYPE" |
   awk -F '[<>]' \
     -v QUOTE="'" -v DQUOTE=\" \
+    -v CACHE="$CACHE" \
       '/href="\/watch.*<\/a>/ {
           gsub(/&#39;/,QUOTE); gsub(/&quot;/,DQUOTE);
           print "[" ++count "] " $5; \
-          print $4 > "/tmp/lmao"
+          print $4 > CACHE
       } /length">/ { LENGTH=$3 
       } /channel\// { AUTHOR=$3 
       } /Shared / { gsub(/Shared /,""); AGE=$3
