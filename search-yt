@@ -8,9 +8,10 @@ CACHE="/tmp/search-yt"
 INSTANCE="https://invidious.snopyta.org/search?q="
 
 QUERY="$( echo $@ | sed 's| |+|g' )"
+TYPE="+content_type:video"
 
 # TODO fix the cache dir
-curl -s "$INSTANCE$QUERY" |
+curl -s "$INSTANCE$QUERY$TYPE" |
   awk -F '[<>]' \
     -v QUOTE="'" -v DQUOTE=\" \
       '/href="\/watch.*<\/a>/ {
