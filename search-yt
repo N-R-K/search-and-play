@@ -13,7 +13,10 @@ curl -s "$INSTANCE$1" |
     -e 'href\=\"/channel.**</a>' -e 'length.*</p' \
     -e '>Shared.*</div' |
   head -n 15 |
-  awk -F '[<>]' ' ( NF > 1 ) {print $2} /views/ { gsub(/\s{2,}/,""); print "[" ++count "]" "-> " $0 } /watch/ {print $1 > "/tmp/vid-id"}'
+  awk -F '[<>]' \
+    ' ( NF > 1 ) { print $2 } /views/ {\
+    gsub(/\s{2,}/,""); print "[" ++count "]" "-> " $0 } /watch/ {\
+    print $1 > "/tmp/vid-id" } '
 
 # i'll try to use this format
 # printf -- "\033[1;31m\nCommand Line App For Downloading YouTube Videos\n" && printf "\033[0;33m[1]-> DistroTub | 14:59 | 21K views | 1 year ago\n\n"
