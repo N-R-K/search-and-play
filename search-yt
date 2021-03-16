@@ -17,7 +17,7 @@ curl -s "$INSTANCE$QUERY" |
           gsub(/&#39;/,QUOTE); gsub(/&quot;/,DQUOTE);
           print $5; print $4 > "/tmp/lmao"
       } /length">/ { LENGTH=$3 
-      } /views$/ {
+      } /views*$/ {
           gsub(/\s{2,}/,"");
           print "[" ++count "]" "-> " $0 \
             " | " LENGTH } '
