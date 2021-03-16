@@ -14,15 +14,17 @@ curl -s "$INSTANCE$QUERY$TYPE" |
   awk -F '[<>]' \
     -v QUOTE="'" -v DQUOTE=\" \
     -v CACHE="$CACHE" \
+    -v RED="$RED" -v YELLOW="$YELLOW" \
       '/href="\/watch.*<\/a>/ {
           gsub(/&#39;/,QUOTE); gsub(/&quot;/,DQUOTE);
-          print "[" ++count "] " $5; \
+          print RED "[" ++count "] " $5; \
           print $4 > CACHE
       } /length">/ { LENGTH=$3 
       } /channel\// { AUTHOR=$3 
       } /Shared / { gsub(/Shared /,""); AGE=$3
       } /views*$/ {
           gsub(/\s{2,}/,"");
-          print AUTHOR " | " \
-            LENGTH " | " \
-            $0 " | " AGE } '
+          print YELLOW AUTHOR \
+            " | " LENGTH \
+            " | " $0 \
+            " | " AGE } '
