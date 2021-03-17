@@ -5,9 +5,9 @@ RED="\033[1;31m"
 YELLOW="\033[0;33m"
 
 CACHE="/tmp/search-yt"
-INSTANCE="https://invidious.snopyta.org/search?q="
+INSTANCE="https://invidious.snopyta.org/"
 
-QUERY="$( echo $@ | sed 's| |+|g' )"
+QUERY="search?q=$( echo $@ | sed 's| |+|g' )"
 TYPE="+content_type:video"
 NUMBER_OF_RESULTS="16"
 
