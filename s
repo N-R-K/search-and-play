@@ -13,11 +13,13 @@ NUMBER_OF_RESULTS="16"
 
 curl -s "$INSTANCE$QUERY$TYPE" |
   awk -F '[<>]' \
-    -v QUOTE="'" -v DQUOTE=\" \
+    -v QUOTE="'" -v DQUOTE=\" -v AMP="\\\&" \
     -v CACHE="$CACHE" \
     -v RED="$RED" -v YELLOW="$YELLOW" \
       '/href="\/watch.*<\/a>/ {
-          gsub(/&#39;/,QUOTE); gsub(/&quot;/,DQUOTE);
+          gsub(/&#39;/,QUOTE);
+          gsub(/&quot;/,DQUOTE);
+          gsub(/&amp;/,AMP);
           print RED "[" ++count "] " $5; \
           print $4 > CACHE
       } /length">/ { LENGTH=$3 
