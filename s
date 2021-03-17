@@ -13,7 +13,7 @@ NUMBER_OF_RESULTS="16"
 
 curl -s "$INSTANCE$QUERY$TYPE" |
   awk -F '[<>]' \
-    -v QUOTE="'" -v DQUOTE=\" -v AMP="\\\&" \
+    -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
     -v CACHE="$CACHE" \
     -v RED="$RED" -v YELLOW="$YELLOW" \
       '/href="\/watch.*<\/a>/ {
