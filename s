@@ -20,7 +20,7 @@ curl -s "$INSTANCE$QUERY$TYPE" |
           gsub(/&#39;/,QUOTE);
           gsub(/&quot;/,DQUOTE);
           gsub(/&amp;/,AMP);
-          print RED "[" ++count "] " $5; \
+          print RED "[" ++count "] " $5;
           print $4 > CACHE
       } /length">/ { LENGTH=$3 
       } /channel\// { AUTHOR=$3 
