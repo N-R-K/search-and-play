@@ -7,7 +7,7 @@ YELLOW="\033[0;33m"
 CACHE="/tmp/search-yt"
 INSTANCE="https://invidious.snopyta.org/"
 
-TYPE="+content_type:video"
+FILTERS="+content_type:video"
 NUMBER_OF_RESULTS="16"
 
 while [ "$1" != "" ] ; do
@@ -28,7 +28,7 @@ done
 # echo $NUMBER_OF_RESULTS
 # echo $QUERY
 
-curl -s "$INSTANCE$QUERY$TYPE" |
+curl -s "$INSTANCE$QUERY$FILTERS" |
   awk -F '[<>]' \
     -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
     -v CACHE="$CACHE" \
