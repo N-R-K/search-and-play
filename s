@@ -28,7 +28,7 @@ done
 # echo $NUMBER_OF_RESULTS
 # echo $QUERY
 
-curl -s "$INSTANCE$QUERY$FILTERS" |
+curl -sS "$INSTANCE$QUERY$FILTERS" |
   awk -F '[<>]' \
     -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
     -v CACHE="$CACHE" \
