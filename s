@@ -17,6 +17,10 @@ while [ "$1" != "" ] ; do
       NUMBER_OF_RESULTS="$(( $2 * 2 ))";
       shift 2 ;;
 
+    "-l")
+      FILTERS="${FILTERS}+duration:$2";
+      shift 2 ;;
+
     *)
       QUERY="search?q=$( echo $@ | sed 's| |+|g' )";
       shift $# ;;
