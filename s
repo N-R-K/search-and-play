@@ -21,6 +21,10 @@ while [ "$1" != "" ] ; do
       FILTERS="${FILTERS}+duration:$2";
       shift 2 ;;
 
+    "-d")
+      FILTERS="${FILTERS}+date:$2";
+      shift 2 ;;
+
     *)
       QUERY="search?q=$( echo $@ | sed 's| |+|g' )";
       shift $# ;;
