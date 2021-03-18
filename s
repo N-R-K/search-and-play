@@ -7,9 +7,26 @@ YELLOW="\033[0;33m"
 CACHE="/tmp/search-yt"
 INSTANCE="https://invidious.snopyta.org/"
 
-QUERY="search?q=$( echo $@ | sed 's| |+|g' )"
 TYPE="+content_type:video"
 NUMBER_OF_RESULTS="16"
+
+while [ "$1" != "" ] ; do
+  case "$1" in
+
+    "-n")
+      NUMBER_OF_RESULTS="$(( $2 * 2 ))";
+      shift 2 ;;
+
+    *)
+      QUERY="search?q=$( echo $@ | sed 's| |+|g' )";
+      shift $# ;;
+
+  esac
+done
+
+# debugging
+# echo $NUMBER_OF_RESULTS
+# echo $QUERY
 
 curl -s "$INSTANCE$QUERY$TYPE" |
   awk -F '[<>]' \
