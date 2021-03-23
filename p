@@ -8,4 +8,4 @@ CACHE="/tmp/search-yt"
   LINK="https://youtube.com$( awk -F '"' -v SELECTION="$1" \
     ' NR == SELECTION { print $2 } ' "${CACHE}" )"
 
-$PLAYER "$LINK"
+$PLAYER "${LINK}"
