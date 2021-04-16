@@ -2,6 +2,7 @@
 
 ### CONFIG ###
 PLAYER="mpv"
+CLIPBOARD_CMD="xclip -o"
 CACHE="/tmp/search-yt"
 
 ### Functions ###
@@ -11,13 +12,19 @@ die(){
   exit 1
 }
 
+play_clipboard(){
+  which "${CLIPBOARD_CMD%% *}" >/dev/null 2>&1 ||
+    die "Clipboard not found"
+  LINK="$(eval $CLIPBOARD_CMD)"
+}
+
 ### Main ###
 
 which "${PLAYER%% *}" >/dev/null 2>&1 ||
   die "$PLAYER not found."
 
 [ -z "$1" ] &&
-  LINK="$(xclip -o)" ||
+  play_clipboard ||
   LINK="https://youtube.com$( awk -F '"' -v SELECTION="$1" \
     ' NR == SELECTION { print $2 } ' "${CACHE}" )"
 
