@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ### CONFIG ###
-PLAYER="devour mpv"
+PLAYER="mpv"
 CACHE="/tmp/search-yt"
 
 ### Functions ###
