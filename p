@@ -13,6 +13,9 @@ die(){
 
 ### Main ###
 
+which "${PLAYER%% *}" >/dev/null 2>&1 ||
+  die "$PLAYER not found."
+
 [ -z "$1" ] &&
   LINK="$(xclip -o)" ||
   LINK="https://youtube.com$( awk -F '"' -v SELECTION="$1" \
