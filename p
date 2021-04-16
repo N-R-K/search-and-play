@@ -39,9 +39,12 @@ play_id(){
 which "${PLAYER%% *}" >/dev/null 2>&1 ||
   die "$PLAYER not found."
 
-[ -z "$1" ] &&
-  play_clipboard ||
-  play_id "$1"
+case "$1" in
+  "-h"|"--help") usage ;;
+  [0-9]) play_id "$1" ;;
+  "") play_clipboard ;;
+  *) die "Invalid" ;;
+esac
 
 [ -z "$LINK" ] && die "Nothing to play"
 
