@@ -1,7 +1,12 @@
 #!/bin/sh
 
+### CONFIG ###
 PLAYER="devour mpv"
 CACHE="/tmp/search-yt"
+
+### Functions ###
+
+### Main ###
 
 [ -z "$1" ] &&
   LINK="$(xclip -o)" ||
