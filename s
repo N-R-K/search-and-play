@@ -56,6 +56,10 @@ while [ "$1" != "" ] ; do
   esac
 done
 
+[ -z "$QUERY" ] &&
+  printf "Nothing to search.\nUse 's --help' for help!\n" >/dev/stderr &&
+  exit 1
+
 curl -sS "$INSTANCE$QUERY$FILTERS" |
   awk -F '[<>]' \
     -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
