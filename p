@@ -34,4 +34,6 @@ which "${PLAYER%% *}" >/dev/null 2>&1 ||
   play_clipboard ||
   play_id "$1"
 
+[ -z "$LINK" ] && die "Nothing to play"
+
 $PLAYER "${LINK}"
