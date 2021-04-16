@@ -18,6 +18,13 @@ play_clipboard(){
   LINK="$(eval $CLIPBOARD_CMD)"
 }
 
+play_id(){
+  [ -f "$CACHE" ] ||
+    die "$CACHE doesn't exist"
+  LINK="https://youtube.com$( awk -F '"' -v SELECTION="$1" \
+  ' NR == SELECTION { print $2 } ' "$CACHE" )"
+}
+
 ### Main ###
 
 which "${PLAYER%% *}" >/dev/null 2>&1 ||
@@ -25,7 +32,6 @@ which "${PLAYER%% *}" >/dev/null 2>&1 ||
 
 [ -z "$1" ] &&
   play_clipboard ||
-  LINK="https://youtube.com$( awk -F '"' -v SELECTION="$1" \
-    ' NR == SELECTION { print $2 } ' "${CACHE}" )"
+  play_id "$1"
 
 $PLAYER "${LINK}"
