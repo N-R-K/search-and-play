@@ -14,10 +14,25 @@ FILTERS="+content_type:video"
 # 16 here for example will show 8 results
 NUMBER_OF_RESULTS="16"
 
+### Functions ###
+usage(){
+  printf "Usage: s [<args>] <search-term>\n"
+  printf "
+ARGUMENTS:
+    -n         Number of results to show.
+    -l         Duration. Valid options <short|long>
+    -d         Date. Valid options <hour|today|week|month|year>
+    -h|--help  print this text and exit\n\n"
+}
+
 ### Main ###
 
 while [ "$1" != "" ] ; do
   case "$1" in
+
+    "-h"|"--help")
+      usage
+      exit 0 ;;
 
     "-n")
       NUMBER_OF_RESULTS="$(( $2 * 2 ))";
