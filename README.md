@@ -4,7 +4,7 @@ Shell scripts to search and play youtube videos from the terminal without any ex
 The script scrapes search results from [Invidious](https://github.com/iv-org/invidious) and parses them with awk. By default it plays videos in mpv but you can change the $PLAYER to whatever you like.
 
 ## Preview
-Work in progress (∩｀-´)⊃━☆ﾟ.*･｡ﾟ 
+![preview.gif](preview.gif)
 
 ## Installation and Usage
 Cone the repo.
