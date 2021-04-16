@@ -68,7 +68,7 @@ curl -sS "$INSTANCE$QUERY$FILTERS" |
       } /channel\// { AUTHOR=$3 
       } /Shared / { gsub(/Shared /,""); AGE=$3
       } /views*$/ {
-          gsub(/\s{2,}/,"");
+          gsub(/[[:space:]]{2,}/,"");
           print COL_REST AUTHOR \
             " | " LENGTH \
             " | " $0 \
