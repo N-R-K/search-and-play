@@ -5,6 +5,11 @@ PLAYER="devour mpv"
 CACHE="/tmp/search-yt"
 
 ### Functions ###
+die(){
+  [ -z "$1" ] ||
+    printf "$@\n" > /dev/stderr
+  exit 1
+}
 
 ### Main ###
 
