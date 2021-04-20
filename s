@@ -22,6 +22,7 @@ usage(){
   printf "Usage: s [<args>] <search-term>\n"
   printf "
 ARGUMENTS:
+    -c         Disable color output.
     -n         Number of results to show.
     -l         Duration. Valid options <short|long>
     -d         Date. Valid options <hour|today|week|month|year>
@@ -36,6 +37,11 @@ while [ "$1" != "" ] ; do
     "-h"|"--help")
       usage
       exit 0 ;;
+
+    "-c")
+      COL_TITLE=""
+      COL_REST=""
+      shift ;;
 
     "-n")
       NUMBER_OF_RESULTS="$(( $2 * 2 ))";
