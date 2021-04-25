@@ -26,7 +26,9 @@ ARGUMENTS:
     -n         Number of results to show.
     -l         Duration. Valid options <short|long>
     -d         Date. Valid options <hour|today|week|month|year>
-    -h|--help  print this text and exit\n\n"
+    -h|--help  print this text and exit\n
+NOTE: If there is no results, try changing the invidious instance.
+      See https://github.com/N-R-K/search-and-play/tree/master#faq for more info.\n"
 }
 
 ### Main ###
