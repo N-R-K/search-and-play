@@ -11,6 +11,9 @@ COL_REST="\033[0;33m"
 
 CACHE="/tmp/search-yt"
 INSTANCE="https://invidious.snopyta.org/"
+# INSTANCE="https://yewtu.be/"
+# INSTANCE="https://invidious.048596.xyz/"
+# INSTANCE="https://vid.puffyan.us/"
 
 FILTERS="+content_type:video"
 # This needs to be 2x
