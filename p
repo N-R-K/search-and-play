@@ -33,6 +33,9 @@ play_clipboard(){
 play_id(){
   [ -f "$CACHE" ] ||
     die "$CACHE doesn't exist"
+  [ "$1" -gt "$( wc -l < $CACHE )" ] &&
+    die "There's only $( wc -l < $CACHE ) results"
+
   LINK="https://youtube.com$( awk -F '"' -v SELECTION="$1" \
   ' NR == SELECTION { print $2 } ' "$CACHE" )"
 }
