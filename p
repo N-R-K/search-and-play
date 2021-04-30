@@ -47,7 +47,10 @@ which "${PLAYER%% *}" >/dev/null 2>&1 ||
 
 case "$1" in
   "-h"|"--help") usage ;;
-  [0-9]) play_id "$1" ;;
+  [0-9]*)
+    [ "$1" -eq "$1" 2>/dev/null ] &&
+      play_id "$1" || die "Invalid"
+    ;;
   "") play_clipboard ;;
   *) die "Invalid" ;;
 esac
