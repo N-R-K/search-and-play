@@ -10,10 +10,10 @@ COL_TITLE="\033[1;31m"
 COL_REST="\033[0;33m"
 
 CACHE="/tmp/search-yt"
-INSTANCE="https://invidious.snopyta.org/"
-# INSTANCE="https://yewtu.be/"
-# INSTANCE="https://invidious.048596.xyz/"
+INSTANCE="https://yewtu.be/"
+# INSTANCE="https://invidious.snopyta.org/"
 # INSTANCE="https://vid.puffyan.us/"
+# INSTANCE="invidious.namazso.eu/"
 
 FILTERS="+content_type:video"
 # This needs to be 2x
