@@ -9,13 +9,13 @@ CLIPBOARD_CMD="xclip -o"
 CACHE="/tmp/search-yt"
 
 ### Functions ###
-die(){
-  [ -z "$1" ] ||
+die() {
+  [ -n "$1" ] &&
     printf "$@\n" > /dev/stderr
   exit 1
 }
 
-usage(){
+usage() {
   printf "Usage: p [ID]\n"
   printf "
   p(lay) is meant to be used with s(earch)
@@ -24,13 +24,13 @@ usage(){
   die
 }
 
-play_clipboard(){
+play_clipboard() {
   which "${CLIPBOARD_CMD%% *}" >/dev/null 2>&1 ||
     die "Clipboard not found"
   LINK="$(eval $CLIPBOARD_CMD)"
 }
 
-play_id(){
+play_id() {
   [ -f "$CACHE" ] ||
     die "$CACHE doesn't exist"
   [ "$1" -gt "$( wc -l < $CACHE )" ] &&
