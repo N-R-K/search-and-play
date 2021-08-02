@@ -64,7 +64,7 @@ done
   printf "Nothing to search.\nUse 's --help' for help!\n" >/dev/stderr &&
   exit 1
 
-curl -sS "$INSTANCE$QUERY$FILTERS" |
+curl -sSL "$INSTANCE$QUERY$FILTERS" |
   awk -F '[<>]' \
     -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
     -v CACHE="$CACHE" \
