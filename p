@@ -36,8 +36,7 @@ play_id() {
   [ "$1" -gt "$( wc -l < $CACHE )" ] &&
     die "There's only $( wc -l < $CACHE ) results"
 
-  LINK="https://youtube.com$( awk -F '"' -v SELECTION="$1" \
-  ' NR == SELECTION { print $4 } ' "$CACHE" )"
+  LINK=$(sed -n "s|\"||g;${1}p" "$CACHE")
 }
 
 ### Main ###

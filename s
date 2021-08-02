@@ -69,13 +69,16 @@ curl -sSL "$INSTANCE$QUERY$FILTERS" |
     -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
     -v CACHE="$CACHE" \
     -v COL_TITLE="$COL_TITLE" -v COL_REST="$COL_REST" \
-      '/href="\/watch.*/ {
+      '/a title="Watch on YouTube"/ {
+          gsub(/a title=.*href=/,"");
+          print $2 > CACHE;
+      }
+      /<p dir="auto">/ {
           gsub(/&#39;/,QUOTE);
           gsub(/&quot;/,DQUOTE);
           gsub(/&amp;/,AMP);
-          print $2 > CACHE;
+          print COL_TITLE "[" ++count "] " $3;
       }
-      /<p dir="auto">/ { print COL_TITLE "[" ++count "] " $3; }
       /<p class="length">/       { LENGTH=$3 }
       /<p class="channel-name"/  { AUTHOR=$3 }
       /<p class="video-data".*Shared/  { gsub(/Shared /,""); AGE=$3 }
