@@ -21,7 +21,7 @@ usage() {
   p(lay) is meant to be used with s(earch)
   p [ID] will play from the s(earch) results
   When invoked without an argument, it will simply try to play whatever is in your clipboard (xclip by default)\n\n"
-  die
+  exit
 }
 
 play_clipboard() {
