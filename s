@@ -55,7 +55,7 @@ while [ -n "$1" ]; do
       FILTERS="${FILTERS}+date:$2";
       shift 2 ;;
     *)
-      QUERY="search?q=$( echo $@ | sed 's| |+|g' )";
+      QUERY="search?q=$( echo "$@" | sed 's| |+|g' )";
       shift $# ;;
   esac
 done
