@@ -33,8 +33,6 @@ play_clipboard() {
 play_id() {
   [ -f "$CACHE" ] ||
     die "$CACHE doesn't exist"
-  [ "$1" -gt "$( wc -l < $CACHE )" ] &&
-    die "There's only $( wc -l < $CACHE ) results"
 
   LINK=$(sed -n "s|\"||g;${1}p" "$CACHE")
 }
