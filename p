@@ -37,7 +37,7 @@ play_id() {
     die "There's only $( wc -l < $CACHE ) results"
 
   LINK="https://youtube.com$( awk -F '"' -v SELECTION="$1" \
-  ' NR == SELECTION { print $2 } ' "$CACHE" )"
+  ' NR == SELECTION { print $4 } ' "$CACHE" )"
 }
 
 ### Main ###

@@ -69,16 +69,16 @@ curl -sS "$INSTANCE$QUERY$FILTERS" |
     -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
     -v CACHE="$CACHE" \
     -v COL_TITLE="$COL_TITLE" -v COL_REST="$COL_REST" \
-      '/href="\/watch.*<\/a>/ {
+      '/href="\/watch.*/ {
           gsub(/&#39;/,QUOTE);
           gsub(/&quot;/,DQUOTE);
           gsub(/&amp;/,AMP);
-          print $4 > CACHE;
-          print COL_TITLE "[" ++count "] " $5;
+          print $2 > CACHE;
       }
-      /length">/   { LENGTH=$3 }
-      /channel\//  { AUTHOR=$3 }
-      /Shared /    { gsub(/Shared /,""); AGE=$3 }
-      /views*$/    { gsub(/[[:space:]]{2,}/,""); VIEWS=$0;
+      /<p dir="auto">/ { print COL_TITLE "[" ++count "] " $3; }
+      /<p class="length">/       { LENGTH=$3 }
+      /<p class="channel-name"/  { AUTHOR=$3 }
+      /<p class="video-data".*Shared/  { gsub(/Shared /,""); AGE=$3 }
+      /<p class="video-data".* views/  { VIEWS=$3;
           print COL_REST AUTHOR " | " LENGTH " | " VIEWS " | " AGE }' |
   head -n "$NUMBER_OF_RESULTS"
