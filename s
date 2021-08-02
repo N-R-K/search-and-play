@@ -21,7 +21,7 @@ FILTERS="+content_type:video"
 NUMBER_OF_RESULTS="16"
 
 ### Functions ###
-usage(){
+usage() {
   printf "Usage: s [<args>] <search-term>\n"
   printf "
 ARGUMENTS:
@@ -36,34 +36,27 @@ NOTE: If there is no results, try changing the invidious instance.
 
 ### Main ###
 
-while [ "$1" != "" ] ; do
+while [ -n "$1" ]; do
   case "$1" in
-
     "-h"|"--help")
       usage
       exit 0 ;;
-
     "-c")
       COL_TITLE=""
       COL_REST=""
       shift ;;
-
     "-n")
       NUMBER_OF_RESULTS="$(( $2 * 2 ))";
       shift 2 ;;
-
     "-l")
       FILTERS="${FILTERS}+duration:$2";
       shift 2 ;;
-
     "-d")
       FILTERS="${FILTERS}+date:$2";
       shift 2 ;;
-
     *)
       QUERY="search?q=$( echo $@ | sed 's| |+|g' )";
       shift $# ;;
-
   esac
 done
 
@@ -80,15 +73,12 @@ curl -sS "$INSTANCE$QUERY$FILTERS" |
           gsub(/&#39;/,QUOTE);
           gsub(/&quot;/,DQUOTE);
           gsub(/&amp;/,AMP);
+          print $4 > CACHE;
           print COL_TITLE "[" ++count "] " $5;
-          print $4 > CACHE
-      } /length">/ { LENGTH=$3 
-      } /channel\// { AUTHOR=$3 
-      } /Shared / { gsub(/Shared /,""); AGE=$3
-      } /views*$/ {
-          gsub(/[[:space:]]{2,}/,"");
-          print COL_REST AUTHOR \
-            " | " LENGTH \
-            " | " $0 \
-            " | " AGE } ' |
+      }
+      /length">/   { LENGTH=$3 }
+      /channel\//  { AUTHOR=$3 }
+      /Shared /    { gsub(/Shared /,""); AGE=$3 }
+      /views*$/    { gsub(/[[:space:]]{2,}/,""); VIEWS=$0;
+          print COL_REST AUTHOR " | " LENGTH " | " VIEWS " | " AGE }' |
   head -n "$NUMBER_OF_RESULTS"
