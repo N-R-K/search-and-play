@@ -10,10 +10,13 @@ COL_TITLE="\033[1;31m"
 COL_REST="\033[0;33m"
 
 CACHE="/tmp/search-yt"
-INSTANCE="https://yewtu.be/"
-# INSTANCE="https://invidious.snopyta.org/"
-# INSTANCE="https://vid.puffyan.us/"
-# INSTANCE="invidious.namazso.eu/"
+
+# You can find a list of public invidious instances here:
+# https://github.com/iv-org/documentation/blob/master/Invidious-Instances.md
+INSTANCE="https://yewtu.be"
+# INSTANCE="https://invidious.snopyta.org"
+# INSTANCE="https://vid.puffyan.us"
+# INSTANCE="invidious.namazso.eu"
 
 FILTERS="+content_type:video"
 # This needs to be 2x
@@ -64,7 +67,7 @@ done
   printf "Nothing to search.\nUse 's --help' for help!\n" >/dev/stderr &&
   exit 1
 
-curl -sSL "$INSTANCE$QUERY$FILTERS" |
+curl -sSL "$INSTANCE/$QUERY$FILTERS" |
   awk -F '[<>]' \
     -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
     -v CACHE="$CACHE" \

@@ -31,7 +31,5 @@ Xclip - For playing from clipboard.
 
 A: The most likely scenario is that the invidious instance is down/blocked. Try changing the "INSTANCE" variable inside the script. [Here's a list of public invidious instances](https://github.com/iv-org/documentation/blob/master/Invidious-Instances.md)
 
-NOTE: Remember to put a trailing backslash. This `https://yewtu.be/` is okay, this `https://yewtu.be` is not.
-
 ## Similar projects
 This script is meant to be minimal/barebones. If you want something more featureful take a look into [ytfzf](https://github.com/pystardust/ytfzf) or [script-yt](https://github.com/sayan01/scripts/blob/master/yt).
