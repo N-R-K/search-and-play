@@ -27,7 +27,7 @@ usage() {
 play_clipboard() {
   which "${CLIPBOARD_CMD%% *}" >/dev/null 2>&1 ||
     die "Clipboard not found"
-  LINK="$(eval $CLIPBOARD_CMD)"
+  LINK="$($CLIPBOARD_CMD)"
 }
 
 play_id() {
