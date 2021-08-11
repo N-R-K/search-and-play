@@ -25,16 +25,20 @@ NUMBER_OF_RESULTS="16"
 
 ### Functions ###
 usage() {
-  printf "Usage: s [<args>] <search-term>\n"
-  printf "
+  cat << EOF
+Usage: s [<args>] <search-term>
+
 ARGUMENTS:
     -c         Disable color output.
     -n         Number of results to show.
     -l         Duration. Valid options <short|long>
     -d         Date. Valid options <hour|today|week|month|year>
-    -h|--help  print this text and exit\n
+    -h|--help  print this text and exit
+
 NOTE: If there is no results, try changing the invidious instance.
-      See https://github.com/N-R-K/search-and-play/tree/master#faq for more info.\n"
+      See https://github.com/N-R-K/search-and-play/tree/master#faq for more info.
+
+EOF
 }
 
 ### Main ###
