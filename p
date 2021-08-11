@@ -25,7 +25,7 @@ usage() {
 }
 
 play_clipboard() {
-  which "${CLIPBOARD_CMD%% *}" >/dev/null 2>&1 ||
+  command -v "${CLIPBOARD_CMD%% *}" >/dev/null 2>&1 ||
     die "Clipboard not found"
   LINK="$($CLIPBOARD_CMD)"
 }
@@ -39,7 +39,7 @@ play_id() {
 
 ### Main ###
 
-which "${PLAYER%% *}" >/dev/null 2>&1 ||
+command -v "${PLAYER%% *}" >/dev/null 2>&1 ||
   die "$PLAYER not found."
 
 case "$1" in
