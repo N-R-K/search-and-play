@@ -10,7 +10,7 @@ The script scrapes search results from [Invidious](https://github.com/iv-org/inv
 Cone the repo.
 
 ```
-git clone https://github.com/N-R-K/search-and-play.git
+git clone https://codeberg.org/NRK/search-and-play.git
 ```
 
 Then just copy/move the files into your $PATH. `chmod +x` them if needed.

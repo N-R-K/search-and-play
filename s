@@ -36,7 +36,7 @@ ARGUMENTS:
     -h|--help  print this text and exit
 
 NOTE: If there is no results, try changing the invidious instance.
-      See https://github.com/N-R-K/search-and-play/tree/master#faq for more info.
+      See https://codeberg.org/NRK/search-and-play#f-a-q for more info.
 
 EOF
 }
