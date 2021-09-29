@@ -1,7 +1,7 @@
 # Search And Play
-Shell scripts to search and play youtube videos from the terminal without any external dependencies.
+Shell scripts to search and play youtube videos from the terminal using only core-utilies.
 
-The script scrapes search results from [Invidious](https://github.com/iv-org/invidious) and parses them with awk. By default it plays videos in mpv but you can change the $PLAYER to whatever you like.
+The script scrapes search results from [Invidious](https://github.com/iv-org/invidious) and parses them with awk.
 
 ## Preview
 ![preview.gif](preview.gif)
@@ -19,12 +19,14 @@ Instead of copying, you can also create a symlink. This way you can do a git pul
 Run `s --help` or `p --help` to see usage.
 
 ## Dependencies
-Curl, Awk, Head, Printf.
+* Curl
+
+All other utilities used are defined by POSIX and should be available on all unix-like systems.
 
 ### Optional
-Mpv (+youtube-dl) - For streaming the video.
+* Mpv (+youtube-dl) - For streaming the video.
 
-Xclip - For playing from clipboard.
+You can change the `$PLAYER` variable inside the script to whatever else you want.
 
 ## F.A.Q
 **Q: Why is the script not outputting any results?**
