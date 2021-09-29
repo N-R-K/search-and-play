@@ -1,5 +1,5 @@
 # Search And Play
-Shell scripts to search and play youtube videos from the terminal using only core-utilies.
+Shell scripts to search and play youtube videos from the terminal using only core-utilities.
 
 The script scrapes search results from [Invidious](https://github.com/iv-org/invidious) and parses them with awk.
 
