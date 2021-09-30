@@ -68,8 +68,7 @@ while [ -n "$1" ]; do
 done
 
 [ -z "$QUERY" ] &&
-  printf "Nothing to search.\nUse 's --help' for help!\n" >/dev/stderr &&
-  exit 1
+  { printf "Nothing to search.\nUse 's --help' for help!\n" >&2; exit 1; }
 
 curl -sSL "$INSTANCE/$QUERY$FILTERS" |
   awk -F '[<>]' \
