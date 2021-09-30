@@ -19,9 +19,8 @@ INSTANCE="https://yewtu.be"
 # INSTANCE="invidious.namazso.eu"
 
 FILTERS="+content_type:video"
-# This needs to be 2x
-# 16 here for example will show 8 results
-NUMBER_OF_RESULTS="16"
+# Default number of results printed to stdout.
+NUMBER_OF_RESULTS="12"
 
 ### Functions ###
 usage() {
@@ -53,7 +52,7 @@ while [ -n "$1" ]; do
       COL_REST=""
       shift ;;
     "-n")
-      NUMBER_OF_RESULTS="$(( $2 * 2 ))";
+      NUMBER_OF_RESULTS="$2";
       shift 2 ;;
     "-l")
       FILTERS="${FILTERS}+duration:$2";
@@ -90,4 +89,4 @@ curl -sSL "$INSTANCE/$QUERY$FILTERS" |
       /<p class="video-data".*Shared/  { gsub(/Shared /,""); AGE=$3 }
       /<p class="video-data".* views/  { VIEWS=$3;
           print COL_REST AUTHOR " | " LENGTH " | " VIEWS " | " AGE }' |
-  head -n "$NUMBER_OF_RESULTS"
+  head -n "$(( NUMBER_OF_RESULTS * 2 ))"
