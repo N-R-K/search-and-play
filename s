@@ -74,14 +74,15 @@ curl -sSL "$INSTANCE/$QUERY$FILTERS" |
     -v QUOTE="'" -v DQUOTE=\" -v AMP='\\&' \
     -v CACHE="$CACHE" \
     -v COL_TITLE="$COL_TITLE" -v COL_REST="$COL_REST" \
-      '/a title="Watch on YouTube"/ {
+      '{  gsub(/&#39;/,QUOTE);
+          gsub(/&quot;/,DQUOTE);
+          gsub(/&amp;/,AMP);
+      }
+      /a title="Watch on YouTube"/ {
           gsub(/a title=.*href=/,"");
           print $2 > CACHE;
       }
       /<p dir="auto">/ {
-          gsub(/&#39;/,QUOTE);
-          gsub(/&quot;/,DQUOTE);
-          gsub(/&amp;/,AMP);
           print COL_TITLE "[" ++count "] " $3;
       }
       /<p class="length">/       { LENGTH=$3 }
