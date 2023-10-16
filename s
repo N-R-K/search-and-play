@@ -8,11 +8,12 @@
 # https://gist.github.com/Prakasaka/219fe5695beeb4d6311583e79933a009
 COL_TITLE="\033[1;31m"
 COL_REST="\033[0;33m"
+COL_RESET="\033[0m"
 
 CACHE="/tmp/search-yt"
 
 # You can find a list of public invidious instances here:
-# https://github.com/iv-org/documentation/blob/master/Invidious-Instances.md
+# https://github.com/iv-org/documentation/blob/master/docs/instances.md
 INSTANCE="https://yewtu.be"
 # INSTANCE="https://invidious.snopyta.org"
 # INSTANCE="https://vid.puffyan.us"
@@ -91,3 +92,5 @@ curl -sSL "$INSTANCE/$QUERY$FILTERS" |
       /<p class="video-data".* views/  { VIEWS=$3;
           print COL_REST AUTHOR " | " LENGTH " | " VIEWS " | " AGE }' |
   head -n "$(( NUMBER_OF_RESULTS * 2 ))"
+
+printf $COL_RESET
