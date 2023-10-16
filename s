@@ -12,7 +12,7 @@ COL_REST="\033[0;33m"
 CACHE="/tmp/search-yt"
 
 # You can find a list of public invidious instances here:
-# https://github.com/iv-org/documentation/blob/master/Invidious-Instances.md
+# https://github.com/iv-org/documentation/blob/master/docs/instances.md
 INSTANCE="https://yewtu.be"
 # INSTANCE="https://invidious.snopyta.org"
 # INSTANCE="https://vid.puffyan.us"

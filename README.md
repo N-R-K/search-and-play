@@ -47,7 +47,7 @@ A: The most likely scenario is that the invidious instance is down/blocked. Try
 changing the "INSTANCE" variable inside the script. Here's a list of
 [public invidious instances].
 
-[public invidious instances]: https://github.com/iv-org/documentation/blob/master/Invidious-Instances.md
+[public invidious instances]: https://github.com/iv-org/documentation/blob/master/docs/instances.md
 
 ## Similar projects
 
